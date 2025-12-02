@@ -1,4 +1,4 @@
-package AC_POTD.day_1;
+package day_1;
 
 public class GoodPairs {
     class Solution {

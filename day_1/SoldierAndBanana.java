@@ -1,4 +1,4 @@
-package AC_POTD.day_1;
+package day_1;
 
 import java.util.*;
 
@@ -15,5 +15,6 @@ public class SoldierAndBanana {
         int borrow = sum - n;
         if (borrow < 0) borrow = 0;
         System.out.print(borrow);
+        sc.close();
     }
 }

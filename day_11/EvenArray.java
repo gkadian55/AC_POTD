@@ -3,7 +3,7 @@ package day_11;
 import java.util.*;
 
 public class EvenArray {
-    public static void main() {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
         StringBuilder sb = new StringBuilder("");
@@ -20,8 +20,7 @@ public class EvenArray {
                     else wrong1++;
                 }
             }
-            if (wrong0 == wrong1 && wrong0 == 0) swaps = 0;
-            else if ((wrong0 == wrong1 || wrong0 - 1 == wrong1) && wrong0 > 0) swaps = wrong0;
+            if (wrong0 == wrong1) swaps = wrong0;
             sb.append(swaps).append("\n");
             t--;
         }

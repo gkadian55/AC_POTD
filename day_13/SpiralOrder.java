@@ -2,41 +2,38 @@ package day_13;
 
 import java.util.*;
 
-public class SpiralOrder {
-    public static void main(){
-        int[][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        List<Integer> spiral = new ArrayList<>();
         int rows = matrix.length;
         int cols = matrix[0].length;
-        List<Integer> spiral = new ArrayList<>();
-        int i = 0, j = 0;
-        while (j < cols) {
-            spiral.add(matrix[i][j]);
-            j++;
+        int top = 0, bottom = rows - 1;
+        int left = 0, right = cols - 1;
+        while (top <= bottom && left <= right) {
+            for (int j = left; j <= right; j++){
+                spiral.add(matrix[top][j]);
+            }
+            top++;
+
+            for (int i = top; i <= bottom; i++) {
+                spiral.add(matrix[i][right]);
+            }
+            right--;
+
+            if (top <= bottom) {
+                for (int j = right; j >= left; j--) {
+                    spiral.add(matrix[bottom][j]);
+                }
+                bottom--;
+            }
+
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    spiral.add(matrix[i][left]);
+                }
+                left++;
+            }
         }
-        j--;
-        i++;
-        while (i < rows) {
-            spiral.add(matrix[i][j]);
-            i++;
-        }
-        i--;
-        j--;
-        while (j >= 0) {
-            spiral.add(matrix[i][j]);
-            j--;
-        }
-        j++;
-        i--;
-        while (i > 0) {
-            spiral.add(matrix[i][j]);
-            i--;
-        }
-        i++;
-        j++;
-        while (j < 2) {
-            spiral.add(matrix[i][j]);
-            j++;
-        }
-        System.out.println(spiral);
+        return spiral;
     }
 }

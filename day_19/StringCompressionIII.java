@@ -2,18 +2,16 @@ package day_19;
 
 class Solution {
     public String compressedString(String word) {
-        word = word + " ";
-        String comp = "";
-        for (int i = 0; i < word.length() - 1; i++) {
+        StringBuilder comp = new StringBuilder("");
+        for (int i = 0; i < word.length(); ) {
             int count = 0;
             char key = word.charAt(i);
-            while (word.charAt(i) == key && count < 9) {
+            while (i < word.length() && count < 9 && word.charAt(i) == key) {
                 count++;
                 i++;
             }
-            comp = comp + count + key;
-            i--;
+            comp.append(count).append(key);
         }
-        return comp;
+        return comp.toString();
     }
 }

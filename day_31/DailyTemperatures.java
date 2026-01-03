@@ -1,20 +1,19 @@
 package day_31;
 
+import java.util.*;
+
 class Solution {
     public int[] dailyTemperatures(int[] temperatures) {
         int n = temperatures.length;
+        Stack<Integer> days = new Stack<>();
         int[] answer = new int[n];
-        for (int i = 0; i < n - 1; i++) {
-            int warmer = 0;
-            for (int j = i; j < n; j++) {
-                if (temperatures[i] < temperatures[j]) {
-                    warmer = j - i;
-                    break;
-                }
+        for (int i = 0; i < n; i++) {
+            while (!days.isEmpty() && temperatures[i] > temperatures[days.peek()]) {
+                int previousDay = days.pop();
+                answer[previousDay] = i - previousDay;
             }
-            answer[i] = warmer;
+            days.push(i);
         }
-        answer[n-1] = 0;
         return answer;
     }
 }
